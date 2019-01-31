@@ -4,6 +4,7 @@ import { isAuthenticated } from '../service/base';
 import Layout from './../components/layout';
 import NotFound from '../views/not_found';
 import Login from './../views/login';
+import Home from './../views/home';
 export default class Routes extends React.Component {
 
 
@@ -11,11 +12,11 @@ export default class Routes extends React.Component {
         return (
             <BrowserRouter>
                 <Switch>
-                    <Route exact path='/' component={() => <div style={{ margin: '10px' }}><h4> Vá para: /adm</h4></div>} />
+                    <Route exact path='/' component={Home} />
                     <PrivateRoute path='/adm' component={Layout} />
                     <Route path='/login' component={Login} />
                     <Route path='*' component={NotFound} />
-                  
+
 
 
                 </Switch>
