@@ -1,5 +1,5 @@
 .login{
-    background-image: url(./../assets/background.jpg);
+    background-image: url(./../../assets/background.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -128,7 +128,7 @@ html:not([dir=rtl]) .buttons-container span + span {
   }
   
   button.primary {
-    background-color: rgb(26, 115, 232);
+    background-color: rgb(17, 93, 27);
     color: white;
   }
   
@@ -138,7 +138,7 @@ html:not([dir=rtl]) .buttons-container span + span {
   }
   
   button.primary:hover:not(:disabled) {
-    background-color: rgb(41, 123, 231);
+    background-color: rgb(30, 97, 58);
     box-shadow: 0 1px 2px 0 rgba(66, 133, 244, 0.3),
         0 1px 3px 1px rgba(66, 133, 244, 0.15);
   }
