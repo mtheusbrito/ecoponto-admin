@@ -1,16 +1,20 @@
+
+body{
+  overflow: hidden;
+}
 .login{
-    background-image: url(./../../assets/background.jpg);
+    /* background-image: url(./../../assets/background.jpg); */
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    width: 2000px;
-    height: 2000px;
+    /* width: 2000px; */
+    /* height: 2000px; */
     background-color:#464646;
-    -o-background-size: cover;
-  /* SHORTHAND CSS NOTATION
-   * background: url(background-photo.jpg) center center cover no-repeat fixed;
-   */
+    /* box-sizing:none; */
+}
+.mouse-navigation {
+  outline: none;
 }
 
 #edit-link-dialog{
@@ -28,6 +32,10 @@
   z-index: 10000;
 
 }
+#edit-link-dialog::backdrop {
+  background: transparent;
+}
+
 dialog{
     display: block;
     position: absolute;
@@ -43,6 +51,16 @@ dialog{
     border-image: initial;
     padding: 1em;
     background: white;
+}
+#custom-links-edit-dialog {
+  background: transparent;
+  border: none;
+  height: 100%;
+  padding: 0;
+  position: fixed;
+  text-align: -webkit-auto;
+  top: 0;
+  width: 100%;
 }
 
 #edit-link-dialog > div {
@@ -69,8 +87,9 @@ dialog{
 }
 
 .input-container{
-    position: relative;
-}input {
+  position: relative;
+}
+input {
     background-color: rgb(241, 243, 244);
     border: none;
     border-radius: 4px;
@@ -85,15 +104,16 @@ dialog{
     padding-inline-start: 8px;
     width: calc(100% - 16px);
   }
+
   
   input::placeholder {
     color: rgba(32, 33, 36, 0.38);
   }
-  
+
 .underline {
     border-bottom: 2px solid rgb(26, 115, 232);
     bottom: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     left: 0;
     margin: auto;
     opacity: 0;
@@ -102,15 +122,54 @@ dialog{
     transition: opacity 120ms ease-out, width 0ms linear 180ms;
     width: 0;
 }
+
+input:focus + .underline {
+  opacity: 1;
+  transition: width 180ms ease-out, opacity 120ms ease-in;
+  width: 100%;
+}
+
+.field-title.focused {
+  color: rgb(26, 115, 232);
+}
+
+.error-msg {
+  color: rgb(217, 48, 37);
+  display: none;
+  font-size: 10px;
+  font-weight: 400;
+  margin-top: 6px;
+}
+
+.invalid label {
+  color: rgb(217, 48, 37);
+}
+
+.invalid .error-msg {
+  display: block;
+}
+
+.invalid .underline {
+  border-color: rgb(217, 48, 37);
+  opacity: 1;
+  transition: width 180ms ease-out, opacity 120ms ease-in;
+  width: 100%;
+}
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
 html:not([dir=rtl]) .buttons-container span + span {
-    margin-left: 16px;
-  }
+  margin-left: 16px;
+}
+
+html[dir=rtl] .buttons-container span + span {
+  margin-right: 16px;
+}
   
-  html[dir=rtl] .buttons-container span + span {
-    margin-right: 16px;
-  }
-  
-  button {
+button {
     border: none;
     border-radius: 4px;
     font-family: 'Roboto', arial, sans-serif;
@@ -178,10 +237,4 @@ html:not([dir=rtl]) .buttons-container span + span {
   html[dir=rtl] #cancel {
     margin-left: 8px;
   }
-
-  .buttons-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 24px;
-}
-  
+ 

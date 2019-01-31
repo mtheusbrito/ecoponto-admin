@@ -1,4 +1,7 @@
 import React from 'react';
+import './bootstrap.min.css';
+import { Link, Redirect, Route, Switch } from 'react-router-dom';
+import service from './../../service/base';
 import {
     Collapse,
     Navbar,
@@ -6,15 +9,19 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem
+    Button, Container
 } from 'reactstrap';
+import urls from '../../urls';
 
 
 export default class Layout extends React.Component {
+
+
+    handleSignOut = async e => {
+        e.preventDefault();
+        service.auth().signOut();
+
+    };
     constructor(props) {
         super(props);
 
@@ -31,37 +38,46 @@ export default class Layout extends React.Component {
     render() {
         return (
             <div>
-                <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/">reactstrap</NavbarBrand>
-                    <NavbarToggler onClick={this.toggle} />
-                    <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar>
-                            <NavItem>
-                                <NavLink href="/components/">Components</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-                            </NavItem>
-                            <UncontrolledDropdown nav inNavbar>
-                                <DropdownToggle nav caret>
-                                    Options
-                    </DropdownToggle>
-                                <DropdownMenu right>
-                                    <DropdownItem>
-                                        Option 1
-                      </DropdownItem>
-                                    <DropdownItem>
-                                        Option 2
-                      </DropdownItem>
-                                    <DropdownItem divider />
-                                    <DropdownItem>
-                                        Reset
-                      </DropdownItem>
-                                </DropdownMenu>
-                            </UncontrolledDropdown>
-                        </Nav>
-                    </Collapse>
-                </Navbar>
+                <div>
+                    <Navbar color="light" light expand="md">
+                        <NavbarBrand href="/">Eco ponto</NavbarBrand>
+                        <NavbarToggler onClick={this.toggle} />
+                        <Collapse isOpen={this.state.isOpen} navbar>
+                            <Nav className="ml-auto" navbar>
+
+                                <NavItem>
+                                    <Link to='/adm/horarios'><Button outline color='success' size='sm' style={{ marginLeft: '10px' }}>Horários</Button></Link>
+                                </NavItem>
+
+                                <NavItem>
+                                    <Link to='/adm/pontos'><Button outline color='success' size='sm' style={{ marginLeft: '10px' }}>Pontos</Button></Link>
+                                </NavItem>
+
+                                <NavItem>
+                                    <Button outline color='danger' size='sm' style={{ marginLeft: '10px' }} onClick={this.handleSignOut}>Desconectar</Button>
+                                </NavItem>
+
+
+
+                            </Nav>
+                        </Collapse>
+                    </Navbar>
+
+                </div>
+
+                <div style={{marginRight: '25px', marginTop: '20px'}} >
+                    <Container fluid >
+                        <React.Suspense fallback={<div>Aguarde ...</div>}>
+
+                            <Switch>
+                                {urls.map((url, idx) => {
+                                    return url.component ? (<Route key={idx} path={url.path} exact={url.exact} name={url.name} component={url.component} />) : (null);
+                                })}
+                                <Redirect from='/adm' to='/adm/dashboard' />
+                            </Switch>
+
+                        </React.Suspense>
+                    </Container></div>
             </div>
         );
     }
