@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default class PontosForm extends React.Component {
+export default class Pontos extends React.Component {
 
     render() {
-        return (<div>PontosForm</div>)
+        return (<div>Pontos</div>)
     }
 }

@@ -3,13 +3,13 @@ body{
   overflow: hidden;
 }
 .login{
-    /* background-image: url(./../../assets/background.jpg); */
+    background-image: url(./../../assets/background.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    /* width: 2000px; */
-    /* height: 2000px; */
+    width: 2000px;
+    height: 2000px;
     background-color:#464646;
     /* box-sizing:none; */
 }
