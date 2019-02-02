@@ -66,7 +66,7 @@ export default class Layout extends React.Component {
                 </div>
 
                 <div style={{marginRight: '25px', marginTop: '20px'}} >
-                    <Container fluid >
+                    <Container  >
                         <React.Suspense fallback={<div>Aguarde ...</div>}>
 
                             <Switch>

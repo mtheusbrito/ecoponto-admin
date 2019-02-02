@@ -32,7 +32,7 @@ export default class Service {
 
     };
 
-    static remove = (id, node) => {
+    static delete = (id, node) => {
         return firebaseDatabase.ref(node + '/' + id).remove();
     };
 
@@ -63,6 +63,7 @@ export default class Service {
     };
 
     static update = (id, node, obj) => {
+        
         return firebaseDatabase.ref(node + '/' + id).set({ ...obj });
 
     };
