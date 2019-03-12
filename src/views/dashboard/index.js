@@ -7,9 +7,9 @@ export default class Dashboard extends React.Component {
         return (
             <div >
                 <Jumbotron>
-                    <p className="lead">Painel admiminstrativo eco-ponto 2019.</p>
+                    <p className="lead">Painel admiminstrativo.</p>
                     <hr className="my-2" />
-                    <p>Ascender Ideias</p>
+                    <p><a href='http://www.ascenderideias.com.br/'>Ascender Ideias</a></p>
                     <p className="lead">
 
                     </p>

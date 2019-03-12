@@ -74,7 +74,6 @@ export default class Horarios extends React.Component {
                 <div className='mybuttons'><Link to='/adm/horarios/novo'><Button color='primary' size='sm'>Adicionar horario</Button></Link></div>
                 <div>
                     <MDBDataTable className='panteon'
-                        striped
                         bordered
                         hover
                         data={data}

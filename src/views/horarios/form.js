@@ -104,7 +104,8 @@ export default class HorariosForm extends React.Component {
                                                 isMulti={true}
                                                 onChange={this.handleChange}
                                                 value={this.state.dias}
-                                                placeholder={'Selecione'} />
+                                                placeholder={'Selecione'}
+                                                noOptionsMessage={() => 'Nenhuma opção restante.'} />
 
                                         </FormGroup>
 

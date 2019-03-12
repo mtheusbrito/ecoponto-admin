@@ -40,21 +40,21 @@ export default class Layout extends React.Component {
             <div>
                 <div>
                     <Navbar color="light" light expand="md">
-                        <NavbarBrand href="/">Eco ponto</NavbarBrand>
+                        <NavbarBrand >Eco pontos</NavbarBrand>
                         <NavbarToggler onClick={this.toggle} />
                         <Collapse isOpen={this.state.isOpen} navbar>
                             <Nav className="ml-auto" navbar>
-
+                                 {
+                                // <NavItem>
+                                //     <Link to='/adm/horarios'><Button outline color='success' size='sm' style={{ margin: '2px' }}>Horários</Button></Link>
+                                // </NavItem>
+                                }
                                 <NavItem>
-                                    <Link to='/adm/horarios'><Button outline color='success' size='sm' style={{ marginLeft: '10px' }}>Horários</Button></Link>
+                                    <Link to='/adm/pontos'><Button outline color='success' size='sm' style={{ margin: '2px' }}>Pontos</Button></Link>
                                 </NavItem>
 
                                 <NavItem>
-                                    <Link to='/adm/pontos'><Button outline color='success' size='sm' style={{ marginLeft: '10px' }}>Pontos</Button></Link>
-                                </NavItem>
-
-                                <NavItem>
-                                    <Button outline color='danger' size='sm' style={{ marginLeft: '10px' }} onClick={this.handleSignOut}>Desconectar</Button>
+                                    <Button outline color='danger' size='sm' style={{ margin: '2px' }} onClick={this.handleSignOut}>Desconectar</Button>
                                 </NavItem>
 
 
@@ -65,7 +65,7 @@ export default class Layout extends React.Component {
 
                 </div>
 
-                <div style={{marginRight: '25px', marginTop: '20px'}} >
+                <div style={{ marginRight: '25px', marginTop: '20px' }} >
                     <Container  >
                         <React.Suspense fallback={<div>Aguarde ...</div>}>
 

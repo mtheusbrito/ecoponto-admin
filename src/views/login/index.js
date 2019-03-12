@@ -2,6 +2,7 @@ import React from 'react';
 import './style.css';
 import { auth } from './../../service/base';
 import { Redirect } from 'react-router-dom';
+// import { Spinner } from 'reactstrap';
 export default class Login extends React.Component {
 
     state = {
@@ -38,51 +39,54 @@ export default class Login extends React.Component {
         const { redirect } = this.state;
 
         return (
-            <dialog id='custom-links-edit-dialog'>
-                <div className='login'>
-                    {redirect && (<Redirect to={from || '/adm'} />)}
+            <div>
+                <dialog id='custom-links-edit-dialog'>
+                    <div className='login'>
+                        {redirect && (<Redirect to={from || '/adm'} />)}
 
-                    <dialog id='edit-link-dialog'>
-                        <div id='dialog-title'>Login</div>
-                        <form id='login-form' onSubmit={this.handleSubmit}>
-                            <div id='email' className='field-container'>
-                                <label id='title-field-name' className='field-title' aria-label='Nome'>Email</label>
-                                <div className='input-container'>
-                                    <input id='email' className='field-input' type='email' autoComplete='off' tabIndex='0' required onChange={e => this.setState({ email: e.target.value })} />
-                                    <div className='underline'></div>
+                        <dialog id='edit-link-dialog'>
+                            <div id='dialog-title'>Login</div>
+                            <form id='login-form' onSubmit={this.handleSubmit}>
+                                <div id='email' className='field-container'>
+                                    <label id='title-field-name' className='field-title' aria-label='Nome'>Email</label>
+                                    <div className='input-container'>
+                                        <input id='email' className='field-input' type='email' autoComplete='off' tabIndex='0' required onChange={e => this.setState({ email: e.target.value })} />
+                                        <div className='underline'></div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div id='password' className='field-container'>
-                                <label id='title-field-name' className='field-title' aria-label='Senha'>Senha</label>
-                                <div className='input-container'>
-                                    <input id='password' className='field-input' type='password' autoComplete='off' tabIndex='0' required spellCheck='off' onChange={e => this.setState({ password: e.target.value })} />
-                                    <div className='underline'></div>
+                                <div id='password' className='field-container'>
+                                    <label id='title-field-name' className='field-title' aria-label='Senha'>Senha</label>
+                                    <div className='input-container'>
+                                        <input id='password' className='field-input' type='password' autoComplete='off' tabIndex='0' required spellCheck='off' onChange={e => this.setState({ password: e.target.value })} />
+                                        <div className='underline'></div>
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div className='filed-container'>
-                                {this.state.error && <p style={{ color: 'red', fontSize: '12px' }}>{this.state.error}</p>}
-                            </div>
-                            <div className="buttons-container">
+                                <div className='filed-container'>
+                                    {this.state.error && <p style={{ color: 'red', fontSize: '12px' }}>{this.state.error}</p>}
+                                </div>
+                                <div className="buttons-container">
 
-                                <span>
-                                    <button hidden id="delete" className="secondary" type="button" tabIndex="0" title="Remover" aria-label="Remover React App">Remover</button>
-                                </span>
-                                <span>
-                                    <button hidden id="cancel" className="secondary" type="button" tabIndex="0" title="Cancelar" aria-label="Cancelar">Cancelar</button>
-                                    <button type="submit" id="done" className="primary" tabIndex="0" title="Acessar" aria-label="Acessar">Acessar</button>
-                                </span>
-                            </div>
-
+                                    <span>
+                                        <button hidden id="delete" className="secondary" type="button" tabIndex="0" title="Remover" aria-label="Remover React App">Remover</button>
+                                    </span>
+                                    <span>
+                                        <button hidden id="cancel" className="secondary" type="button" tabIndex="0" title="Cancelar" aria-label="Cancelar">Cancelar</button>
+                                        <button type="submit" id="done" className="primary" tabIndex="0" title="Acessar" aria-label="Acessar">Acessar</button>
+                                    </span>
+                                </div>
 
 
-                        </form>
 
-                    </dialog>
-                </div>
-            </dialog>
+                            </form>
 
+                        </dialog>
+                    </div>
+                </dialog>
+
+             
+            </div>
         );
     }
 

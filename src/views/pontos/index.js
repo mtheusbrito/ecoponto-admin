@@ -5,10 +5,6 @@ import { Button, Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import service from './../../service/service';
 import './../styles/panteon.css';
 
-
-
-
-
 export default class Pontos extends React.Component {
 
     componentDidMount() {
@@ -31,14 +27,20 @@ export default class Pontos extends React.Component {
                     width: 100
                 },
                 {
-                    label: 'Latitude',
-                    field: 'latitude',
+                    'label': 'Dias',
+                    'field': 'dias',
+                    'sort': 'asc',
+                    'width': 100
+                },
+                {
+                    label: 'Início',
+                    field: 'inicio',
                     sort: 'asc',
                     width: 150
                 },
                 {
-                    label: 'Longitude',
-                    field: 'longitude',
+                    label: 'Término',
+                    field: 'termino',
                     sort: 'asc',
                     width: 150
                 },
@@ -51,7 +53,11 @@ export default class Pontos extends React.Component {
 
             ],
             rows: this.state.pontos.map(ponto => {
-                return { local: ponto.local, latitude: ponto.latitude, longitude: ponto.longitude, opcoes: <div> <Link to={`/adm/pontos/editar/${ponto.id}`}><Button size='sm' color='default'><i className='fas fa-edit'></i></Button></Link> <Button size='sm' color='default' onClick={() => this.handleDelete(ponto.id)}><i className='fas fa-trash'></i></Button></div> }
+
+                let dias = ponto.dias;
+                return { local: ponto.local, dias: dias ? (Object.keys(dias).map(key => {
+                    return <div className='mult-items' key={key}><div className='text-mult' key={key}>{dias[key].label} </div></div>
+                })) : ('')  ,inicio: ponto.inicio, termino: ponto.termino, opcoes: <div> <Link to={`/adm/pontos/editar/${ponto.id}`}><Button size='sm' color='default'><i className='fas fa-edit'></i></Button></Link> <Button size='sm' color='default' onClick={() => this.handleDelete(ponto.id)}><i className='fas fa-trash'></i></Button></div> }
             })
         };
         return (

@@ -1,4 +1,4 @@
-import { firebaseDatabase } from './base';
+import { firebaseDatabase, firebaseStorage } from './base';
 
 
 export default class Service {
@@ -17,7 +17,12 @@ export default class Service {
         return query;
     };
 
+    static uploadFile = (node, imagem, callback) => {
+        firebaseStorage.ref(node).child(imagem.name).getDownloadURL().then(url => {
+            console.log(url);
+        });
 
+    }
 
     static create = (node, objToSubmit) => {
 
@@ -63,7 +68,7 @@ export default class Service {
     };
 
     static update = (id, node, obj) => {
-        
+
         return firebaseDatabase.ref(node + '/' + id).set({ ...obj });
 
     };

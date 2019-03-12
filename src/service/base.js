@@ -13,6 +13,7 @@ const config = {
 
 firebase.initializeApp(config);
 export const firebaseDatabase = firebase.database();
+export  const firebaseStorage = firebase.storage();
 
 export const auth = firebase.auth();
 export const storageKey = 'userAuth';
