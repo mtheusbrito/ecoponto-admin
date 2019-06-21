@@ -1,83 +1,35 @@
 import React from 'react';
-import './bootstrap.min.css';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
-import service from './../../service/base';
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    Button, Container
-} from 'reactstrap';
+import Sidebar from './../sidebar';
+import Navbar from './../navbar';
 import urls from '../../urls';
-
 
 export default class Layout extends React.Component {
 
 
-    handleSignOut = async e => {
-        e.preventDefault();
-        service.auth().signOut();
 
-    };
-    constructor(props) {
-        super(props);
-
-        this.toggle = this.toggle.bind(this);
-        this.state = {
-            isOpen: false
-        };
-    }
-    toggle() {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    }
     render() {
         return (
             <div>
-                <div>
-                    <Navbar color="light" light expand="md">
-                        <NavbarBrand >Eco pontos</NavbarBrand>
-                        <NavbarToggler onClick={this.toggle} />
-                        <Collapse isOpen={this.state.isOpen} navbar>
-                            <Nav className="ml-auto" navbar>
-                                 {
-                                // <NavItem>
-                                //     <Link to='/adm/horarios'><Button outline color='success' size='sm' style={{ margin: '2px' }}>Horários</Button></Link>
-                                // </NavItem>
-                                }
-                                <NavItem>
-                                    <Link to='/adm/pontos'><Button outline color='success' size='sm' style={{ margin: '2px' }}>Pontos</Button></Link>
-                                </NavItem>
-
-                                <NavItem>
-                                    <Button outline color='danger' size='sm' style={{ margin: '2px' }} onClick={this.handleSignOut}>Desconectar</Button>
-                                </NavItem>
+                <Navbar />
+                <div className="container-fluid">
+                    <div className="row">
+                        <Sidebar />
 
 
+                        <main role="main" className="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                            <React.Suspense fallback={<div>Aguarde ...</div>}>
+                                <Switch>
+                                    {urls.map((url, idx) => {
+                                        return url.component ? (<Route key={idx} path={url.path} exact={url.exact} name={url.name} component={url.component} />) : (null);
+                                    })}
+                                    <Redirect from='/adm' to='/adm/dashboard' />
+                                </Switch>
 
-                            </Nav>
-                        </Collapse>
-                    </Navbar>
-
+                            </React.Suspense>
+                        </main>
+                    </div>
                 </div>
-
-                <div style={{ marginRight: '25px', marginTop: '20px' }} >
-                    <Container  >
-                        <React.Suspense fallback={<div>Aguarde ...</div>}>
-
-                            <Switch>
-                                {urls.map((url, idx) => {
-                                    return url.component ? (<Route key={idx} path={url.path} exact={url.exact} name={url.name} component={url.component} />) : (null);
-                                })}
-                                <Redirect from='/adm' to='/adm/dashboard' />
-                            </Switch>
-
-                        </React.Suspense>
-                    </Container></div>
             </div>
         );
     }
