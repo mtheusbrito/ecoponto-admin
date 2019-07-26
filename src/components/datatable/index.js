@@ -16,6 +16,7 @@ export default class Table extends React.Component {
         let parametro = this.props.url;
 
         function deletar(id) {
+            
             swal({
                 title: "Voce tem certeza?",
                 text: 'Uma vez deletado, voce não poderá recuperar',
@@ -26,7 +27,8 @@ export default class Table extends React.Component {
 
             }).then((result) => {
                 if (result) {
-                    service.remove(id, parametro).then(function(value) {
+                    console.log(id + " ::: " +parametro);
+                    service.delete(id, parametro).then(function(value) {
                         swal('Excluido com sucesso', { icon: 'success' });
                     }, function(reason) {
                         swal("Ops! Algo deu errado", {
@@ -77,6 +79,7 @@ export default class Table extends React.Component {
                             { title: "Local", data: 'local', width: '80%' },
                             { title: "Inicio", data: 'inicio' },
                             { title: "Termino", data: 'termino' },
+                            {title: "Cidade", data: 'cidade', defaultContent: ""},
                             { title: "", data: null, ordering: false, render: renderPontosOpcoes, },
 
                         ]

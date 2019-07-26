@@ -17,12 +17,12 @@ export default class Sidebar extends React.Component {
                 Pontos
               </Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link to="/adm/cidades" className="nav-link">
                 <i className="fa fa-compass" aria-hidden="true" /> <span />
                 Cidades
               </Link>
-            </li>
+            </li> */}
             <li className="nav-item">
               <Link to="/adm/parceiros" className="nav-link">
                 <i className="fa fa-users" aria-hidden="true" /> <span />

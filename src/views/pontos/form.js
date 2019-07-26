@@ -15,6 +15,7 @@ export default class Pontos extends React.Component {
         local: '',
         latitude: '',
         longitude: '',
+        cidade: '',
         url: '',
         imagem: null,
         isUploading: false,
@@ -50,9 +51,9 @@ export default class Pontos extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        const { id, local, latitude, longitude, url, descricao, dias, inicio, termino } = this.state;
+        const { id, local, latitude, longitude,cidade, url, descricao, dias, inicio, termino } = this.state;
         let obj = {
-            id, local, latitude, longitude, url, descricao, inicio, termino
+            id, local, latitude, longitude, cidade, url, descricao, inicio, termino
         };
 
         if (this.state.id) {
@@ -147,6 +148,15 @@ export default class Pontos extends React.Component {
                                         </FormGroup>
                                     </Col>
                                 </Row>
+
+                               
+                                    <FormGroup row> 
+                                         <label for="cidade" class="col-sm-2 col-form-label">Cidade</label>
+                                         <div className="col-sm-10">
+                                         <input type="text" className="form-control" id="cidade" required name='cidade' value={this.state.cidade} onChange={ e => this.setState({cidade: e.target.value })} />
+                                        </div>
+                                    </FormGroup>
+                            
                                 <Row>
                                     <Col md={4}>
                                         <FormGroup>
